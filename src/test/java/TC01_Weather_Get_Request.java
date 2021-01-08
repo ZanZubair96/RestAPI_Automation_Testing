@@ -18,7 +18,7 @@ public class TC01_Weather_Get_Request {
 
 
         // Response object
-        Response response = httpRequest.request(Method.GET, "/current.json?key=9a399d13bf3443998c252903210801&q=London");
+        Response response = httpRequest.request(Method.GET, "/current.json?key={API_KEY}&q=London");
 
 
         // Json to String
