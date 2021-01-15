@@ -1,3 +1,6 @@
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.equalTo;
+
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -7,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class TC01_Weather_Get_Request {
 
-    @Test
+
     void getWeatherDetails() {
         String key = Constants.API_KEY;
 
@@ -34,4 +37,18 @@ public class TC01_Weather_Get_Request {
         System.out.println("Status line is:"+statusLine);
         Assert.assertEquals(statusLine, "HTTP/1.1 200 OK");
     }
+
+    @Test
+    void getFromReqRes() {
+        baseURI = "https://reqres.in/api/";
+
+        given().
+                get("users?page=2").
+                then().
+                statusCode(200).assertThat().body("data[1].id",equalTo(8));
+//                log().all();
+
+
+    }
+
 }
