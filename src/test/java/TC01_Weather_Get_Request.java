@@ -48,6 +48,7 @@ public class TC01_Weather_Get_Request {
                 statusCode(200).assertThat().body("data[1].id",equalTo(8));
 //                log().all();
 
+        System.out.println("For Commit purpose");
 
     }
 
