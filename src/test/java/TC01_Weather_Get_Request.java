@@ -21,7 +21,7 @@ public class TC01_Weather_Get_Request {
         RequestSpecification httpRequest = RestAssured.given();
 
         // Response object
-        Response response = httpRequest.request(Method.GET, "/current.json?key="+key+"&q=London");
+        Response response = httpRequest.request(Method.GET, "/current.json?key=" + key + "&q=London");
 
         // Json to String
         String responseBody = response.getBody().asString();
@@ -33,8 +33,8 @@ public class TC01_Weather_Get_Request {
         Assert.assertEquals(statusCode, 200);
 
         //status line verification
-        String statusLine=response.getStatusLine();
-        System.out.println("Status line is:"+statusLine);
+        String statusLine = response.getStatusLine();
+        System.out.println("Status line is:" + statusLine);
         Assert.assertEquals(statusLine, "HTTP/1.1 200 OK");
     }
 
@@ -42,11 +42,11 @@ public class TC01_Weather_Get_Request {
     void getFromReqRes() {
         baseURI = "https://reqres.in/api/";
 
-        given().
-                get("users?page=2").
+        given().get("users?page=2").
                 then().
-                statusCode(200).assertThat().body("data[1].id",equalTo(8));
+                statusCode(200).assertThat().body("data[1].id", equalTo(8));
 //                log().all();
+
 
         System.out.println("For Commit purpose");
 
